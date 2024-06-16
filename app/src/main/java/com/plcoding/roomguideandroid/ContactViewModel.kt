@@ -54,7 +54,7 @@ class TodoViewModel(
                     weight = weight
                 )
                 viewModelScope.launch {
-                    dao.upsertTodo(todo)
+                    dao.insertTodo(todo)
                 }
                 _state.update { it.copy(
                     isAddingTodo = false,
