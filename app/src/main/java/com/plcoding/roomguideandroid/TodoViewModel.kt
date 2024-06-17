@@ -8,15 +8,15 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class TodoViewModel(
-    private val dao: TodoDao
+    private val repository: TodoRepository
 ): ViewModel() {
 
     private val _sortType = MutableStateFlow(SortType.TODO_NAME)
     private val _todos = _sortType
         .flatMapLatest { sortType ->
             when(sortType) {
-                SortType.TODO_NAME -> dao.getTodosOrderedByName()
-                SortType.WEIGHT -> dao.getTodosOrderedByWeight()
+                SortType.TODO_NAME -> repository.getTodosOrderedByName()
+                SortType.WEIGHT -> repository.getTodosOrderedByWeight()
             }
         }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
@@ -33,7 +33,7 @@ class TodoViewModel(
         when(event) {
             is TodoEvent.DeleteTodo -> {
                 viewModelScope.launch {
-                    dao.deleteTodo(event.todo)
+                    repository.deleteTodo(event.todo)
                 }
             }
             TodoEvent.HideDialog -> {
@@ -54,7 +54,7 @@ class TodoViewModel(
                     weight = weight
                 )
                 viewModelScope.launch {
-                    dao.insertTodo(todo)
+                    repository.insertTodo(todo)
                 }
                 _state.update { it.copy(
                     isAddingTodo = false,

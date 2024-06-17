@@ -24,11 +24,16 @@ class MainActivity : ComponentActivity() {
             "todos.db"
         ).build()
     }
+
+    private val repository by lazy {
+        TodoRepository(db.dao)
+    }
+
     private val viewModel by viewModels<TodoViewModel>(
         factoryProducer = {
             object : ViewModelProvider.Factory {
                 override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-                    return TodoViewModel(db.dao) as T
+                    return TodoViewModel(repository) as T
                 }
             }
         }
