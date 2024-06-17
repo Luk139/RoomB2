@@ -7,6 +7,7 @@ import androidx.room.PrimaryKey
 data class Todo(
     val todo: String,
     val weight: Int,
+    val description: String? = null,  // Add this line
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0
 )

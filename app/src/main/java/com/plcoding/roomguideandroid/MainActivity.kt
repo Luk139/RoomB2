@@ -12,17 +12,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.room.Room
 import com.plcoding.roomguideandroid.ui.theme.RoomGuideAndroidTheme
 
 class MainActivity : ComponentActivity() {
 
     private val db by lazy {
-        Room.databaseBuilder(
-            applicationContext,
-            TodoDatabase::class.java,
-            "todos.db"
-        ).build()
+        TodoDatabase.getDatabase(applicationContext) // Updated this line
     }
 
     private val repository by lazy {
