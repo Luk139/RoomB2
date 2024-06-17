@@ -1,7 +1,9 @@
-package com.plcoding.roomguideandroid
+package com.plcoding.roomguideandroid.given
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.plcoding.roomguideandroid.tasks.Todo
+import com.plcoding.roomguideandroid.tasks.TodoRepository
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch

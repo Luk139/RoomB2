@@ -1,4 +1,6 @@
-package com.plcoding.roomguideandroid
+package com.plcoding.roomguideandroid.given
+
+import com.plcoding.roomguideandroid.tasks.Todo
 
 data class TodoState(
     val todos: List<Todo> = emptyList(),
