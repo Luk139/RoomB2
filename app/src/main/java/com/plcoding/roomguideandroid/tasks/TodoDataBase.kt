@@ -1,10 +1,9 @@
 package com.plcoding.roomguideandroid.tasks
 
-import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.plcoding.roomguideandroid.given.TodoDao
 
-//TODO refactor this class to
+//Aufgabe 3
+//TODO refactor this class to initialise the Database
 
 abstract class TodoDatabase: RoomDatabase() {
 
